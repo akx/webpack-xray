@@ -6,7 +6,7 @@
   "scripts": {
     "build": "poi build --no-clear",
     "dev": "poi",
-    "dist": "node scripts/generate-example-data.js && poi build --no-clear && ghpg -d dist -c $(git rev-parse HEAD)",
+    "dist": "node scripts/generate-example-data.js && poi build --no-clear && ghpg -d dist -m $(git rev-parse HEAD)",
     "lint": "tslint src/**/*.ts*"
   },
   "devDependencies": {
