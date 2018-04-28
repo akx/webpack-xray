@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        // Basic Options
+        "target": "es5",
+        "module": "commonjs",
+        "lib": ["esnext", "dom"],
+        "allowJs": false,
+        "checkJs": false,
+        "declaration": false,
+        "sourceMap": true,
+        "downlevelIteration": true,
+        "jsx": "react",
+        
+        // Strict Type-Checking Options
+        "strict": true,
+        "noImplicitAny": false,
+        "strictNullChecks": true,
+        "noImplicitThis": true,
+        "alwaysStrict": true,
+
+        // Additional Checks
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": false,
+
+        // Module Resolution Options
+        "moduleResolution": "node"
+    }
+}

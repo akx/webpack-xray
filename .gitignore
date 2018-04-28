@@ -1,0 +1,6 @@
+*.log
+*private*json
+.idea
+/stats.json
+dist
+node_modules

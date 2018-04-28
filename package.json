@@ -1,0 +1,34 @@
+{
+  "name": "webpack-xray",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "src/index.tsx",
+  "scripts": {
+    "build": "poi build --no-clear",
+    "dev": "poi",
+    "dist": "node scripts/generate-example-data.js && poi build --no-clear && ghpg -d dist -c $(git rev-parse HEAD)",
+    "lint": "tslint src/**/*.ts*"
+  },
+  "devDependencies": {
+    "@ngfk/poi-preset-react-typescript": "^0.0.3",
+    "ghpg": "^1.0.1",
+    "node-sass": "^4.9.0",
+    "poi": "^9.6.13",
+    "sass-loader": "^7.0.1",
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.3"
+  },
+  "dependencies": {
+    "@types/react": "^16.3.13",
+    "@types/react-router": "^4.0.24",
+    "@types/react-table": "^6.7.9",
+    "bulma": "^0.7.1",
+    "lodash": "^4.17.10",
+    "path-to-regexp": "^2.2.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-table": "^6.8.2"
+  }
+}
