@@ -1,6 +1,6 @@
-<div style="text-align: center">
+<p align="center">
 <img src="https://raw.githubusercontent.com/akx/webpack-xray/master/icon.png" align="center">
-</div>
+</p>
 
 
 A modern take on [webpack/analyse](https://github.com/webpack/analyse)
