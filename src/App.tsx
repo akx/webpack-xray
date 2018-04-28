@@ -11,7 +11,7 @@ interface AppState {
   loadingExampleData: boolean,
 }
 
-const EXAMPLE_DATA_URL = (process.env.EXAMPLE_DATA_URL || '/example-data.json');
+const EXAMPLE_DATA_URL = (process.env.EXAMPLE_DATA_URL || './example-data.json');
 const LOAD_EXAMPLE_DATA_INITIALLY = (process.env.NODE_ENV !== 'production');
 
 export default class App extends React.Component<any, AppState> {
