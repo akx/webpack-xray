@@ -1,6 +1,7 @@
 <div style="text-align: center">
-![webpack-xray](./icon.png)
+<img src="https://raw.githubusercontent.com/akx/webpack-xray/master/icon.png" align="center">
 </div>
+
 
 A modern take on [webpack/analyse](https://github.com/webpack/analyse)
 powered by TypeScript, React, React-Table and Bulma.
