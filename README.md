@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://raw.githubusercontent.com/akx/webpack-xray/master/icon.png" align="center">
+<img src="https://raw.githubusercontent.com/akx/webpack-xray/master/design/icon.png" align="center">
 </p>
 
 
