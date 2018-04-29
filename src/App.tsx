@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {WebpackAnalysisData} from './WebpackAnalysisTypes';
 import {HashRouter as Router, Link, NavLink} from 'react-router-dom';
-import * as routes from './routes';
 import {router} from './routes';
 import {Switch} from 'react-router';
 import WelcomeView from './views/WelcomeView';
+import {NavBar} from './components/NavBar';
 
 interface AppState {
   data?: WebpackAnalysisData;
@@ -55,25 +55,7 @@ export default class App extends React.Component<any, AppState> {
     return (
       <Router>
         <div>
-          <div className="navbar is-dark">
-            <div className="navbar-start">
-              <NavLink exact to={routes.Home.path} className="navbar-item" activeClassName="is-active">
-                Home
-              </NavLink>
-              <NavLink to={routes.AssetList.path} className="navbar-item" activeClassName="is-active">
-                Assets
-              </NavLink>
-              <NavLink to={routes.ChunkList.path} className="navbar-item" activeClassName="is-active">
-                Chunks
-              </NavLink>
-              <NavLink to={routes.EntrypointList.path} className="navbar-item" activeClassName="is-active">
-                Entrypoints
-              </NavLink>
-              <NavLink to={routes.ModuleList.path} className="navbar-item" activeClassName="is-active">
-                Modules
-              </NavLink>
-            </div>
-          </div>
+          <NavBar/>
           <Switch>
             {router.getReactRoutesList({data})}
           </Switch>
