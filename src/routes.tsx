@@ -47,7 +47,7 @@ export const EntrypointList = router.route<never>({
 export const Home = router.route<never>({
   path: '/',
   exact: true,
-  render: ({data}) => <HomeView data={data}/>,
+  render: ({data, onAnalyzeOther}) => <HomeView data={data} onAnalyzeOther={onAnalyzeOther}/>,
 });
 
 export const ModuleList = router.route<never>({

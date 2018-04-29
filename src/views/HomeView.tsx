@@ -61,6 +61,7 @@ const StatsParagraphs = ({data}) => {
 
 export default class HomeView extends React.Component<{
   data: WebpackAnalysisData,
+  onAnalyzeOther: () => void,
 },
   any> {
   render() {
@@ -76,6 +77,11 @@ export default class HomeView extends React.Component<{
           </div>
         </section>
         <WarningsAndErrorsSection data={data}/>
+        <section className="section">
+          <div className="container">
+            <a href="#" onClick={() => this.props.onAnalyzeOther()}>Analyze another file...</a>
+          </div>
+        </section>
       </>
     );
   }

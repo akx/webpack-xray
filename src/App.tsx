@@ -57,7 +57,10 @@ export default class App extends React.Component<any, AppState> {
         <div>
           <NavBar/>
           <Switch>
-            {router.getReactRoutesList({data})}
+            {router.getReactRoutesList({
+              data,
+              onAnalyzeOther: () => this.setState({data: undefined}),
+            })}
           </Switch>
         </div>
       </Router>
