@@ -1,15 +1,20 @@
 import * as React from 'react';
 import ReactTable, {Column} from 'react-table';
 import {Link} from 'react-router-dom';
-import {AssetsColumn, ChunksColumn, SizeColumn} from '../../table-columns';
+import {AssetLink, ChunksColumn, SizeColumn} from '../../table-columns';
 import {Asset} from '../../WebpackAnalysisTypes';
 import {BooleanCell} from '../../table-cells';
 
 const columns: Column[] = [
-  {accessor: 'name', Header: 'Name'},
+  {
+    accessor: 'name',
+    Header: 'Name',
+    Cell: (d) => (<AssetLink name={d.value} />),
+  },
   SizeColumn,
   ChunksColumn,
   {accessor: 'emitted', Header: 'Emitted', Cell: BooleanCell},
+  {accessor: 'isOverSizeLimit', Header: 'Over Size Limit?', Cell: BooleanCell},
 ];
 
 export default class AssetListView extends React.Component<{

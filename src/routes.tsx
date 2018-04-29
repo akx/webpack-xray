@@ -7,12 +7,17 @@ import ChunkListView from './views/lists/ChunkListView';
 import AssetListView from './views/lists/AssetListView';
 import EntrypointListView from './views/lists/EntrypointListView';
 import HigherRouter from './higher-router';
+import AssetDetailView from './views/details/AssetDetailView';
 
 export const router = new HigherRouter();
 
 export const AssetDetail = router.route<{ id: string }>({
   path: '/asset/:id',
-  render: () => <div>TODO</div>,
+  render: ({data, match: {params}}) => (
+    <AssetDetailView
+      asset={data.assets.find((asset) => `${asset.name}` === params.id)!}
+    />
+  ),
 });
 
 export const AssetList = router.route<never>({
