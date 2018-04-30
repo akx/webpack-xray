@@ -22,13 +22,17 @@ If you like, you can also use it offline (and these instructions double as instr
 
 * Lists the assets, chunks, entry points and modules in your bundle in sortable tables
 * Drilldowns: chunk origins, module reasons, etc.
+* Chunk-and-module graph (a little slow on large projects)
+* Module referrer/referrent tables
 
 ## Missing features (c.f. analyse)
 
-* Module graphs
-* Chunk graphs
 * Hints
 * Profiler data
 * Support for Webpack 3 `children` data?
+
+## Other planned features
+
+* "Critical path" analysis, i.e. "why are these large modules included?"
 
 [poi]: http://poi.js.org/
