@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
-import omit from 'lodash/omit';
 
 import {Module, WebpackAnalysisData} from '../../WebpackAnalysisTypes';
 import Tabbed, {TabInfo} from '../../components/Tabbed';
@@ -19,7 +18,7 @@ export default class ModuleDetailView extends React.Component<{
       {
         id: 'Raw Info',
         render() {
-          return (<pre><code>{JSON.stringify(omit(module), null, 2)}</code></pre>);
+          return (<pre><code>{JSON.stringify(module, null, 2)}</code></pre>);
         },
       },
       {

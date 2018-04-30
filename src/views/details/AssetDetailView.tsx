@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
-import {omit} from 'lodash';
 
 import {Asset} from '../../WebpackAnalysisTypes';
 import Tabbed, {TabInfo} from '../../components/Tabbed';
@@ -20,7 +19,7 @@ export default class AssetDetailView extends React.Component<{
       {
         id: 'Raw Info',
         render() {
-          return (<pre><code>{JSON.stringify(omit(asset, []), null, 2)}</code></pre>);
+          return (<pre><code>{JSON.stringify(asset, null, 2)}</code></pre>);
         },
       },
     ];

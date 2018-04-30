@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
-import {omit} from 'lodash';
 
 import {Chunk, Module, Origin} from '../../WebpackAnalysisTypes';
 import Tabbed, {TabInfo} from '../../components/Tabbed';
 import ReactTable, {Column} from 'react-table';
 import {ModuleTable} from '../../components/ModuleTable';
+import {omit} from '../../utils';
 
 const originTableColumns: Column[] = [
   {accessor: 'module', Header: 'Module'},

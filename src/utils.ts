@@ -21,3 +21,13 @@ export function commonPrefix(strings: string[]): string | undefined {
 
   return first.slice(0, commonLength);
 }
+
+export function omit(obj: object, keysToOmit: string[]): object {
+  const newObject = {};
+  Object.keys(obj).forEach((key) => {
+    if (!keysToOmit.includes(key)) {
+      newObject[key] = obj[key];
+    }
+  });
+  return newObject;
+}

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
-import {omit} from 'lodash';
 import {WebpackAnalysisData} from '../WebpackAnalysisTypes';
 
 export default class WelcomeView extends React.Component<{
