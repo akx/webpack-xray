@@ -1,16 +1,17 @@
 import * as React from 'react';
-
-import ChunkDetailView from './views/details/ChunkDetailView';
-import ModuleListView from './views/lists/ModuleListView';
-import HomeView from './views/HomeView';
-import ChunkListView from './views/lists/ChunkListView';
-import AssetListView from './views/lists/AssetListView';
-import EntrypointListView from './views/lists/EntrypointListView';
 import HigherRouter from './higher-router';
-import AssetDetailView from './views/details/AssetDetailView';
 import {getModule} from './data-utils';
-import ModuleDetailView from './views/details/ModuleDetailView';
 import {ModuleId} from './WebpackAnalysisTypes';
+
+import AssetDetailView from './views/details/AssetDetailView';
+import AssetListView from './views/lists/AssetListView';
+import ChunkDetailView from './views/details/ChunkDetailView';
+import ChunkListView from './views/lists/ChunkListView';
+import EntrypointListView from './views/lists/EntrypointListView';
+import GraphView from './views/GraphView';
+import HomeView from './views/HomeView';
+import ModuleDetailView from './views/details/ModuleDetailView';
+import ModuleListView from './views/lists/ModuleListView';
 
 export const router = new HigherRouter();
 
@@ -61,4 +62,9 @@ export const ModuleDetail = router.route<{ id: ModuleId }>({
 export const ModuleList = router.route<never>({
   path: '/modules',
   render: ({data}) => <ModuleListView moduleList={data.modules}/>,
+});
+
+export const Graph = router.route<never>({
+  path: '/graph',
+  render: ({data}) => <GraphView data={data}/>,
 });

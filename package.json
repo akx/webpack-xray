@@ -19,10 +19,16 @@
     "typescript": "^2.8.3"
   },
   "dependencies": {
+    "@types/cytoscape": "^3.1.8",
+    "@types/lodash": "^4.14.108",
     "@types/react": "^16.3.13",
     "@types/react-router": "^4.0.24",
     "@types/react-table": "^6.7.9",
     "bulma": "^0.7.1",
+    "cytoscape": "^3.2.11",
+    "cytoscape-cola": "^2.2.3",
+    "cytoscape-dagre": "^2.2.1",
+    "cytoscape-klay": "^3.1.1",
     "lodash": "^4.17.10",
     "path-to-regexp": "^2.2.1",
     "react": "^16.3.2",

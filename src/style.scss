@@ -29,3 +29,9 @@ $asset-color: hsl(116, 70%, 80%);
 .is-view {
   margin-top: 1.5rem;
 }
+
+#graph-container {
+  width: 100%;
+  height: 900px;
+  display: block;
+}

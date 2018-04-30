@@ -28,6 +28,9 @@ export const NavBar = () => (
       <NavLink to={routes.ModuleList.path} className="navbar-item" activeClassName="is-active">
         Modules
       </NavLink>
+      <NavLink to={routes.Graph.path} className="navbar-item" activeClassName="is-active">
+        Graph
+      </NavLink>
     </div>
   </div>
 );

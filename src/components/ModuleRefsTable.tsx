@@ -1,9 +1,9 @@
+import * as React from 'react';
 import {ModuleId, WebpackAnalysisData} from '../WebpackAnalysisTypes';
-import {sanitizeModuleName} from '../utils';
-import React from 'react';
 import {getModuleRefs} from '../data-utils';
+import {ModuleLink} from './links';
 
-export const ModuleRefsTable = ({data, moduleId}: {
+export default ({data, moduleId}: {
   data: WebpackAnalysisData,
   moduleId: ModuleId,
 }) => {
@@ -13,11 +13,11 @@ export const ModuleRefsTable = ({data, moduleId}: {
       <tbody>
       {refs.referrents.map((m) => <tr key={`to_${m.id}`}>
         <td>&rarr;</td>
-        <td>{sanitizeModuleName(m.name)}</td>
+        <td><ModuleLink module={m}/></td>
       </tr>)}
       {refs.referrers.map((m) => <tr key={`fr_${m.id}`}>
         <td>&larr;</td>
-        <td>{sanitizeModuleName(m.name)}</td>
+        <td><ModuleLink module={m}/></td>
       </tr>)}
       </tbody>
     </table>
