@@ -10,8 +10,8 @@ export interface ChildMap {
   [key: string]: string;
 }
 
-type ChunkId = number | string;
-type ModuleId = number;
+export type ChunkId = number | string;
+export type ModuleId = number;
 
 export interface WebpackAnalysisData {
   assets: Asset[];

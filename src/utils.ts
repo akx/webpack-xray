@@ -1,5 +1,5 @@
 export function sanitizeModuleName(name: string): string {
-  return name.replace(/(\.\/)?node_modules/g, '~');
+  return name.replace(/(\.\/)?node_modules[/]?/g, '~');
 }
 
 // Ported from https://raw.githubusercontent.com/hughsk/common-prefix/master/index.js

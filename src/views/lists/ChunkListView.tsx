@@ -2,8 +2,9 @@ import * as React from 'react';
 import ReactTable, {Column} from 'react-table';
 import {Link} from 'react-router-dom';
 import {Chunk} from '../../WebpackAnalysisTypes';
-import {ChunkLink, SizeColumn} from '../../table-columns';
+import {SizeColumn} from '../../table-columns';
 import {BooleanCell, IntegerCell} from '../../table-cells';
+import {ChunkLink} from '../../components/links';
 
 const columns: Column[] = [
   {accessor: 'id', Header: 'Identifier', Cell: (r) => <ChunkLink name={r.value}/>},

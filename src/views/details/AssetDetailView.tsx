@@ -4,7 +4,7 @@ import {omit} from 'lodash';
 
 import {Asset} from '../../WebpackAnalysisTypes';
 import Tabbed, {TabInfo} from '../../components/Tabbed';
-import {ChunkLink} from '../../table-columns';
+import {ChunkLink} from '../../components/links';
 
 export default class AssetDetailView extends React.Component<{
   asset: Asset,

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import ReactTable, {Column} from 'react-table';
 import {Link} from 'react-router-dom';
-import {AssetLink, ChunksColumn, SizeColumn} from '../../table-columns';
+import {ChunksColumn, SizeColumn} from '../../table-columns';
 import {Asset} from '../../WebpackAnalysisTypes';
 import {BooleanCell} from '../../table-cells';
+import {AssetLink} from '../../components/links';
 
 const columns: Column[] = [
   {
