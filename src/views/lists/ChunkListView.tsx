@@ -7,7 +7,8 @@ import {BooleanCell, IntegerCell} from '../../table-cells';
 import {ChunkLink} from '../../components/links';
 
 const columns: Column[] = [
-  {accessor: 'id', Header: 'Identifier', Cell: (r) => <ChunkLink name={r.value}/>},
+  {accessor: 'id', Header: 'ID', Cell: (r) => <ChunkLink name={r.value}/>},
+  {accessor: 'names', Header: 'Names', Cell: (r) => r.value.join(', ')},
   SizeColumn,
   {accessor: 'entry', Header: 'Entry?', Cell: BooleanCell},
   {accessor: 'initial', Header: 'Initial?', Cell: BooleanCell},
@@ -15,6 +16,13 @@ const columns: Column[] = [
     id: 'nOrigins',
     accessor: (c: Chunk) => c.origins.length,
     Header: '#Origins',
+    Cell: IntegerCell,
+    style: {textAlign: 'right'},
+  },
+  {
+    id: 'nModules',
+    accessor: (c: Chunk) => c.modules.length,
+    Header: '#Modules',
     Cell: IntegerCell,
     style: {textAlign: 'right'},
   },
