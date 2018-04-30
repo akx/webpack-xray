@@ -2,48 +2,16 @@ import * as React from 'react';
 
 import {Module} from '../WebpackAnalysisTypes';
 import {ChunksColumn, SizeColumn} from '../table-columns';
-import ReactTable, {Column, RowInfo} from 'react-table';
-import Tabbed from './Tabbed';
+import ReactTable, {Column} from 'react-table';
 import {sanitizeModuleName} from '../utils';
 import {IntegerCell} from '../table-cells';
-
-const moduleReasonTableColumns: Column[] = [
-  {accessor: 'type', Header: 'Type'},
-  {accessor: 'module', Header: 'Module'},
-  {accessor: 'userRequest', Header: 'User Request'},
-  {accessor: 'loc', Header: 'Loc'},
-];
-
-const ModuleTableDetail = ({row}) => {
-  const module: Module = row._original;
-  return (
-    <Tabbed tabs={[
-      {
-        id: 'Reasons',
-        render() {
-          return (
-            <ReactTable
-              columns={moduleReasonTableColumns}
-              data={module.reasons}
-            />
-          );
-        },
-      },
-      {
-        id: 'Raw Info',
-        render() {
-          return (<pre><code>{JSON.stringify(module, null, 2)}</code></pre>);
-        },
-      },
-    ]}
-    />
-  );
-};
+import {ModuleLink} from './links';
 
 const moduleTableColumns: Column[] = [
   {
     id: 'name',
     accessor: (m: Module) => sanitizeModuleName(m.name),
+    Cell: (d) => <ModuleLink module={d.original} />,
     Header: 'Name',
   },
   SizeColumn,
@@ -77,7 +45,6 @@ export const ModuleTable = ({modules}: { modules: Module[] }) => {
     <ReactTable
       columns={moduleTableColumns}
       data={modules}
-      SubComponent={ModuleTableDetail}
     />
   );
 };

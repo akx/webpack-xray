@@ -3,15 +3,13 @@ import {Link} from 'react-router-dom';
 import {Column} from 'react-table';
 import {commonPrefix} from './utils';
 import {IntegerCell} from './table-cells';
-import {AssetLink, ChunkLink} from './components/links';
+import {AssetLink, ChunkLinks} from './components/links';
 
 export const ChunksColumn: Column = {
   id: 'chunks',
   Header: 'Chunks',
   accessor: 'chunks',
-  Cell: (row) => (row.value as string[]).map((chunkName) => (
-    <ChunkLink name={chunkName} key={chunkName}/>
-  )),
+  Cell: (row) => <ChunkLinks chunks={row.value}/>,
 };
 
 export const AssetsColumn: Column = {
