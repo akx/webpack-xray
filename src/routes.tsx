@@ -8,6 +8,9 @@ import AssetListView from './views/lists/AssetListView';
 import EntrypointListView from './views/lists/EntrypointListView';
 import HigherRouter from './higher-router';
 import AssetDetailView from './views/details/AssetDetailView';
+import {getModule} from './data-utils';
+import ModuleDetailView from './views/details/ModuleDetailView';
+import {ModuleId} from './WebpackAnalysisTypes';
 
 export const router = new HigherRouter();
 
@@ -48,6 +51,11 @@ export const Home = router.route<never>({
   path: '/',
   exact: true,
   render: ({data, onAnalyzeOther}) => <HomeView data={data} onAnalyzeOther={onAnalyzeOther}/>,
+});
+
+export const ModuleDetail = router.route<{ id: ModuleId }>({
+  path: '/module/:id',
+  render: ({data, match: {params}}) => (<ModuleDetailView data={data} module={getModule(data, params.id)} />),
 });
 
 export const ModuleList = router.route<never>({
