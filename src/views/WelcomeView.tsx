@@ -39,7 +39,9 @@ export default class WelcomeView extends React.Component<{
               If you're using vanilla Webpack, you can generate one
               by adding the <code>--json</code> flag (and optionally the <code>--profile</code> flag,
               for additional timing information) to your Webpack command line and directing the output to a file.
-              <pre><code>$ webpack --mode=production --json --profile > stats.json</code></pre>
+              <br/>
+              <code>$ webpack --mode=production --json --profile > stats.json</code>
+              <br/>
               For other build systems and Webpack wrappers, please consult their documentation.
             </p>
             <p>
