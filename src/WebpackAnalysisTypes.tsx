@@ -19,7 +19,7 @@ export interface WebpackAnalysisData {
   builtAt: number;
   children: any[];
   chunks: Chunk[];
-  entrypoints: EntrypointMap;
+  entrypoints?: EntrypointMap;
   errors: string[];
   filteredAssets: number;
   filteredModules: number;

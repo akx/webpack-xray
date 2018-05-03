@@ -38,7 +38,7 @@ const WarningsAndErrorsSection = ({data}: { data: WebpackAnalysisData }) => {
 };
 
 const StatsParagraphs = ({data}) => {
-  const nEntrypoints = Object.keys(data.entrypoints).length;
+  const nEntrypoints = (data.entrypoints ? Object.keys(data.entrypoints).length : 0);
   return (
     <>
       <p>
