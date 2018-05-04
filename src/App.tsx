@@ -8,10 +8,10 @@ import {NavBar} from './components/NavBar';
 
 interface AppState {
   data?: WebpackAnalysisData;
-  loadingExampleData: boolean,
+  loadingExampleData: boolean;
 }
 
-const EXAMPLE_DATA_URL = (process.env.EXAMPLE_DATA_URL || './example-data.json');
+const EXAMPLE_DATA_URL = (process.env.EXAMPLE_DATA_URL || './static/example-data/example-webpack3.json');
 const LOAD_EXAMPLE_DATA_INITIALLY = (process.env.NODE_ENV !== 'production');
 
 export default class App extends React.Component<any, AppState> {
