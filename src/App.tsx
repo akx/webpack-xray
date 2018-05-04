@@ -11,8 +11,8 @@ interface AppState {
   loadingExampleData: boolean;
 }
 
-const EXAMPLE_DATA_URL = (process.env.EXAMPLE_DATA_URL || './static/example-data/example-webpack3.json');
-const LOAD_EXAMPLE_DATA_INITIALLY = (process.env.NODE_ENV !== 'production');
+// For development
+const initialDataURL = (process.env.INITIAL_DATA_URL);
 
 export default class App extends React.Component<any, AppState> {
   state: AppState = {
@@ -21,14 +21,14 @@ export default class App extends React.Component<any, AppState> {
   };
 
   componentDidMount() {
-    if (LOAD_EXAMPLE_DATA_INITIALLY) {
-      this.loadExampleData();
+    if (initialDataURL) {
+      this.loadExampleData(initialDataURL);
     }
   }
 
-  loadExampleData() {
+  loadExampleData(url) {
     this.setState({loadingExampleData: true});
-    fetch(EXAMPLE_DATA_URL)
+    fetch(url)
       .then((resp) => resp.json())
       .then((data: WebpackAnalysisData) => {
         this.setState({loadingExampleData: false, data});
@@ -48,7 +48,7 @@ export default class App extends React.Component<any, AppState> {
       return (
         <WelcomeView
           onLoadFile={(newData) => this.setState({data: newData})}
-          onRequestExample={() => this.loadExampleData()}
+          onRequestExample={(url) => this.loadExampleData(url)}
         />
       );
     }

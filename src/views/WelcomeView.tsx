@@ -4,7 +4,7 @@ import {WebpackAnalysisData} from '../WebpackAnalysisTypes';
 
 export default class WelcomeView extends React.Component<{
   onLoadFile: (data: WebpackAnalysisData) => void,
-  onRequestExample: () => void,
+  onRequestExample: (url: string) => void,
 }, any> {
   loadFile = (file: File) => {
     const reader = new FileReader();
@@ -66,11 +66,21 @@ export default class WelcomeView extends React.Component<{
                 Alternatively, if you don't have a Webpack JSON file lying around and want to just kick the tires,
                 you can load an example file.
               </p>
-              <a
-                className="button is-medium"
-                onClick={() => this.props.onRequestExample()}
-                style={{margin: 'auto', marginTop: '1em'}}
-              >Load Example</a>
+              <div style={{margin: 'auto', marginTop: '1em'}}>
+                <a
+                  className="button is-medium"
+                  onClick={() => this.props.onRequestExample('./static/example-data/example-webpack3.json')}
+                >
+                  Load Webpack 3 Example
+                </a>
+                &nbsp;
+                <a
+                  className="button is-medium"
+                  onClick={() => this.props.onRequestExample('./static/example-data/example-webpack4.json')}
+                >
+                  Load Webpack 4 Example
+                </a>
+              </div>
             </div>
 
           </div>
