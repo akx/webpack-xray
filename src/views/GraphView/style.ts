@@ -30,6 +30,7 @@ export default [
       'shape': 'ellipse',
       'width': 'data(vsize)',
       'height': 'data(vsize)',
+      'opacity': 0.8,
     },
   },
   {

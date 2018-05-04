@@ -11,7 +11,7 @@ export interface ChildMap {
 }
 
 export type ChunkId = number | string;
-export type ModuleId = number;
+export type ModuleId = number | string;
 
 export interface WebpackAnalysisData {
   assets: Asset[];

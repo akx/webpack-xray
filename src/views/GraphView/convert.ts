@@ -1,5 +1,6 @@
 import {WebpackAnalysisData} from '../../WebpackAnalysisTypes';
 import * as cy from 'cytoscape';
+import {sanitizeModuleName} from '../../utils';
 
 interface ExtraNodeDataDefinition extends cy.NodeDataDefinition {
   [key: string]: any;
@@ -8,6 +9,7 @@ interface ExtraNodeDataDefinition extends cy.NodeDataDefinition {
 export function generateElements(data: WebpackAnalysisData): cy.ElementsDefinition {
   const nodes: cy.NodeDefinition[] = [];
   const edges: cy.EdgeDefinition[] = [];
+  const createdEdgesSet = new Set();
   data.chunks.forEach((chunk) => {
     const chunkNodeId = `chunk_${chunk.id}`;
     if (chunk.modules.length) {
@@ -25,7 +27,7 @@ export function generateElements(data: WebpackAnalysisData): cy.ElementsDefiniti
         data: {
           id: moduleNodeId,
           moduleId: module.id,
-          label: `${module.id}`,
+          label: `${sanitizeModuleName(module.id.toString())}`,
           parent: chunkNodeId,
           size: module.size,
           vsize: 10 + Math.sqrt(module.size),
@@ -33,9 +35,19 @@ export function generateElements(data: WebpackAnalysisData): cy.ElementsDefiniti
         classes: 'module',
       });
       module.reasons.forEach((reason) => {
+        if (reason.moduleId === null) {
+          console.warn('Reason has no moduleID', reason);
+          return;
+        }
         const sourceModuleNodeId = `module_${reason.moduleId}`;
+        const edgeId = `${sourceModuleNodeId}_to_${moduleNodeId}`;
+        if (createdEdgesSet.has(edgeId)) {
+          return;
+        }
+        createdEdgesSet.add(edgeId);
         edges.push({
           data: {
+            id: edgeId,
             source: sourceModuleNodeId,
             target: moduleNodeId,
           },
