@@ -1,5 +1,12 @@
+const StatsJSONPlugin = require('./StatsJSONPlugin');
+
 module.exports = {
-  homepage: './',
+  publicPath: './',
   generateStats: true,
-  presets: [require('@ngfk/poi-preset-react-typescript')()]
+  plugins: [
+    require('@poi/plugin-typescript')(),
+  ],
+  configureWebpack(config, context) {
+    config.plugins.push(new StatsJSONPlugin(__dirname + '/stats.json'));
+  }
 };
