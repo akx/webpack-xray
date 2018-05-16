@@ -13,8 +13,10 @@ export function getModuleRefs(data: WebpackAnalysisData, moduleId: ModuleId): {
 }
 
 export function getModule(data: WebpackAnalysisData, moduleId: ModuleId | string): Module {
-  if (typeof moduleId === 'string') {
+  if (typeof moduleId === 'string' && /^\d+$/.test(moduleId)) {
     moduleId = parseInt(moduleId, 10);
+  } else if (typeof moduleId === 'string') {
+    moduleId = decodeURIComponent(moduleId)
   }
   const module = data.modules.find((m) => m.id === moduleId);
   if (module === undefined) {
