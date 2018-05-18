@@ -6,9 +6,11 @@ export function getModuleRefs(data: WebpackAnalysisData, moduleId: ModuleId): {
 } {
   const module = getModule(data, moduleId);
   const referrents = data.modules.filter(
-    (destM) => destM.reasons.some((r) => r.moduleId === moduleId)
+    (destM) => destM.reasons.some((r) => r.moduleId === moduleId),
   );
-  const referrers = module.reasons.map((r) => getModule(data, r.moduleId));
+  const referrers = module.reasons
+    .filter((r) => r.moduleId)
+    .map((r) => getModule(data, r.moduleId));
   return {referrents, referrers};
 }
 
