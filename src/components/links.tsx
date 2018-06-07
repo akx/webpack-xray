@@ -17,7 +17,6 @@ export const ChunkLinks = ({chunks}: { chunks: ChunkId[] }): React.ReactElement<
   </React.Fragment>
 );
 
-
 export const AssetLink = ({name, displayName = name}: { name: string, displayName?: string }) => (
   <Link to={routes.AssetDetail.reverse({id: name})} className="asset-link">
     {displayName || name}

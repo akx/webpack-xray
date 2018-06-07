@@ -22,7 +22,7 @@ export function getModule(data: WebpackAnalysisData, moduleId: ModuleId | string
   if (typeof moduleId === 'string' && /^\d+$/.test(moduleId)) {
     moduleId = parseInt(moduleId, 10);
   } else if (typeof moduleId === 'string') {
-    moduleId = decodeURIComponent(moduleId)
+    moduleId = decodeURIComponent(moduleId);
   }
   const module = data.modules.find((m) => m.id === moduleId);
   if (module === undefined) {
