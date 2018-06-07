@@ -31,3 +31,18 @@ export function omit(obj: object, keysToOmit: string[]): object {
   });
   return newObject;
 }
+
+export function uniq<T>(inArr: ArrayLike<T>): T[] {
+  const out: T[] = [];
+  const seen = new Set<T>();
+
+  // tslint:disable-next-line:prefer-for-of
+  for (let i = 0; i < inArr.length; i++) {
+    const el = inArr[i];
+    if (!seen.has(el)) {
+      seen.add(el);
+      out.push(el);
+    }
+  }
+  return out;
+}

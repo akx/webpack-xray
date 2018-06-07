@@ -7,7 +7,7 @@ export default ({data, moduleId}: {
   data: WebpackAnalysisData,
   moduleId: ModuleId,
 }) => {
-  const refs = getModuleRefs(data, moduleId);
+  const refs = getModuleRefs(data, moduleId, true);
   return (
     <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
       <tbody>

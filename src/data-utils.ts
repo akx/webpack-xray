@@ -1,6 +1,7 @@
 import {Module, ModuleId, WebpackAnalysisData} from './WebpackAnalysisTypes';
+import {uniq} from './utils';
 
-export function getModuleRefs(data: WebpackAnalysisData, moduleId: ModuleId): {
+export function getModuleRefs(data: WebpackAnalysisData, moduleId: ModuleId, unique: boolean = false): {
   referrers: Module[],
   referrents: Module[],
 } {
@@ -11,7 +12,10 @@ export function getModuleRefs(data: WebpackAnalysisData, moduleId: ModuleId): {
   const referrers = module.reasons
     .filter((r) => r.moduleId)
     .map((r) => getModule(data, r.moduleId));
-  return {referrents, referrers};
+  return {
+    referrers: (unique ? uniq(referrers) : referrers),
+    referrents: (unique ? uniq(referrents) : referrents),
+  };
 }
 
 export function getModule(data: WebpackAnalysisData, moduleId: ModuleId | string): Module {

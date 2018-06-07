@@ -18,9 +18,13 @@ cyklay(cy);
 // cycola(cy);
 // cydagre(cy);
 
-type GraphViewProps = { data: WebpackAnalysisData };
-type GraphViewState = { focus?: React.ReactElement<any> };
+interface GraphViewProps {
+  data: WebpackAnalysisData;
+}
 
+interface GraphViewState {
+  focus?: React.ReactElement<any>;
+}
 
 export default class GraphView extends React.Component<GraphViewProps, GraphViewState> {
   state = {
@@ -67,7 +71,6 @@ export default class GraphView extends React.Component<GraphViewProps, GraphView
       });
     }
   }
-
 
   focusOnModule(moduleIdString: string): void {
     const data = this.props.data;
