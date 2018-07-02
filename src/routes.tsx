@@ -27,7 +27,7 @@ export const AssetDetail = router.route<{ id: string }>({
   path: '/asset/:id',
   render: ({data, match: {params}}: RouterProps) => (
     <AssetDetailView
-      asset={data.assets.find((asset) => `${asset.name}` === params.id)!}
+      asset={data.assets.find((asset) => `${asset.name}` === unescape(params.id))!}
     />
   ),
 });
@@ -41,7 +41,7 @@ export const ChunkDetail = router.route<{ id: string }>({
   path: '/chunk/:id',
   render: ({data, match: {params}}: RouterProps) => (
     <ChunkDetailView
-      chunk={data.chunks.find((c) => `${c.id}` === params.id)!}
+      chunk={data.chunks.find((c) => `${c.id}` === unescape(params.id))!}
     />
   ),
 });
@@ -65,7 +65,7 @@ export const Home = router.route<never>({
 export const ModuleDetail = router.route<{ id: ModuleId }>({
   path: '/module/:id',
   render: ({data, match: {params}}: RouterProps) => (
-    <ModuleDetailView data={data} module={getModule(data, params.id)} />
+    <ModuleDetailView data={data} module={getModule(data, unescape(params.id))}/>
   ),
 });
 
