@@ -8,17 +8,51 @@ import ModuleReasonsTable from '../../components/ModuleReasonsTable';
 import {formatInteger} from '../../formatting';
 import {ChunkLinks, ModuleLink} from '../../components/links';
 import {getModule} from '../../data-utils';
+import {ModuleTable} from '../../components/ModuleTable';
 
 // TODO: Flesh me out
 
-export default class ModuleDetailView extends React.Component<{
-  data: WebpackAnalysisData,
-  module: Module,
-},
-  any> {
+interface ModuleDetailViewProps {
+  data: WebpackAnalysisData;
+  module: Module;
+}
+
+const ModuleInfo = ({data, module}: ModuleDetailViewProps) => (
+  <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <tbody>
+    <tr>
+      <th>Size</th>
+      <td className="has-text-right">{formatInteger(module.size)} b</td>
+    </tr>
+    <tr>
+      <th>Chunks</th>
+      <td><ChunkLinks chunks={module.chunks}/></td>
+    </tr>
+    <tr>
+      <th>Issuer</th>
+      <td>{module.issuerId !== null ? <ModuleLink module={getModule(data, module.issuerId)}/> : 'none'}</td>
+    </tr>
+    </tbody>
+  </table>
+);
+
+export default class ModuleDetailView extends React.Component<ModuleDetailViewProps, {}> {
   render() {
     const {data, module} = this.props;
     const tabs: TabInfo[] = [
+      {
+        id: 'Info',
+        render() {
+          return <ModuleInfo module={module} data={data}/>;
+        },
+      },
+      {
+        id: 'Submodules',
+        hidden: !data.modules,
+        render() {
+          return <ModuleTable modules={data.modules}/>;
+        },
+      },
       {
         id: 'Refs',
         render() {
@@ -44,29 +78,7 @@ export default class ModuleDetailView extends React.Component<{
         <h1 className="title">
           Module <b>{module.id}</b>
         </h1>
-        <div className="columns">
-          <div className="column">
-            <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-              <tbody>
-              <tr>
-                <th>Size</th>
-                <td className="has-text-right">{formatInteger(module.size)} b</td>
-              </tr>
-              <tr>
-                <th>Chunks</th>
-                <td><ChunkLinks chunks={module.chunks}/></td>
-              </tr>
-              <tr>
-                <th>Issuer</th>
-                <td>{module.issuerId !== null ? <ModuleLink module={getModule(data, module.issuerId)}/> : 'none'}</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-          <div className="column is-two-thirds">
-            <Tabbed tabs={tabs}/>
-          </div>
-        </div>
+        <Tabbed tabs={tabs}/>
       </div>
     );
   }
