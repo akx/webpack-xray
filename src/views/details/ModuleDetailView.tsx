@@ -39,6 +39,13 @@ const ModuleInfo = ({data, module}: ModuleDetailViewProps) => (
 export default class ModuleDetailView extends React.Component<ModuleDetailViewProps, {}> {
   render() {
     const {data, module} = this.props;
+    if (!module) {
+      return (
+        <div className="notification is-warning">
+          The module was not found.
+        </div>
+      );
+    }
     const tabs: TabInfo[] = [
       {
         id: 'Info',

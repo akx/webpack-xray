@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 
-import {Chunk, Module, Origin} from '../../WebpackAnalysisTypes';
+import {Chunk, Origin} from '../../WebpackAnalysisTypes';
 import Tabbed, {TabInfo} from '../../components/Tabbed';
 import ReactTable, {Column} from 'react-table';
 import {ModuleTable} from '../../components/ModuleTable';
@@ -26,7 +26,11 @@ export default class ChunkDetailView extends React.Component<{
   render() {
     const {chunk} = this.props;
     if (!chunk) {
-      return <div>Oopsy woopsy</div>;
+      return (
+        <div className="notification is-warning">
+          The chunk was not found.
+        </div>
+      );
     }
 
     const tabs: TabInfo[] = [
@@ -53,7 +57,7 @@ export default class ChunkDetailView extends React.Component<{
     return (
       <div className="container is-view">
         <h1 className="title">
-          Chunk <b>{chunk.id}</b>
+          Chunk <b>{chunk.id}</b> ({chunk.names.join(', ')})
         </h1>
         <Tabbed tabs={tabs}/>
       </div>

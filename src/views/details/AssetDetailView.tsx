@@ -12,7 +12,11 @@ export default class AssetDetailView extends React.Component<{
   render() {
     const {asset} = this.props;
     if (!asset) {
-      return <div>Oopsy woopsy</div>;
+      return (
+        <div className="notification is-warning">
+          The asset was not found.
+        </div>
+      );
     }
 
     const tabs: TabInfo[] = [
