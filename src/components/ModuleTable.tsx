@@ -11,7 +11,7 @@ const moduleTableColumns: Column[] = [
   {
     id: 'name',
     accessor: (m: Module) => sanitizeModuleName(m.name),
-    Cell: (d) => <ModuleLink module={d.original} />,
+    Cell: (d) => <ModuleLink module={d.original}/>,
     Header: 'Name',
   },
   SizeColumn,
@@ -43,6 +43,9 @@ const moduleTableColumns: Column[] = [
 export const ModuleTable = ({modules}: { modules: Module[] }) => {
   return (
     <ReactTable
+      filterable
+      defaultFilterMethod={(filter, row) => String(row[filter.id]).includes(filter.value)}
+      defaultPageSize={50}
       columns={moduleTableColumns}
       data={modules}
     />
