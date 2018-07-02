@@ -35,3 +35,11 @@ $asset-color: hsl(116, 70%, 80%);
   height: 900px;
   display: block;
 }
+
+
+.WelcomeView-inner {
+  transition: transform 0.5s;
+  &.dropping {
+    transform: scale(0.9);
+  }
+}

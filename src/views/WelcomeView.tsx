@@ -1,12 +1,36 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 import {WebpackAnalysisData} from '../WebpackAnalysisTypes';
+import Dropzone from 'react-dropzone';
 
-export default class WelcomeView extends React.Component<{
+interface WelcomeViewProps {
   onLoadFile: (data: WebpackAnalysisData) => void,
   onRequestExample: (url: string) => void,
-}, any> {
-  loadFile = (file: File) => {
+}
+
+interface WelcomeViewState {
+  isDropping: boolean;
+}
+
+export default class WelcomeView extends React.Component<WelcomeViewProps, WelcomeViewState> {
+  public state: WelcomeViewState = {
+    isDropping: false,
+  };
+
+  public render() {
+    return (
+      <Dropzone
+        style={{position: 'relative'}}
+        onDrop={(files) => this.loadFile(files[0])}
+        onDragEnter={() => this.setState({isDropping: true})}
+        onDragLeave={() => this.setState({isDropping: false})}
+      >
+        {this.renderInner()}
+      </Dropzone>
+    );
+  }
+
+  private loadFile = (file: File) => {
     const reader = new FileReader();
     reader.onload = (event) => {
       let data;
@@ -25,10 +49,10 @@ export default class WelcomeView extends React.Component<{
     reader.readAsText(file);
   }
 
-  render() {
+  private renderInner() {
     return (
       <>
-        <section className="section">
+        <section className={`WelcomeView-inner section ${this.state.isDropping ? 'dropping' : ''}`}>
           <div className="container">
             <h1 className="title is-1">
               Welcome to webpack-xray!
@@ -44,21 +68,24 @@ export default class WelcomeView extends React.Component<{
               For other build systems and Webpack wrappers, please consult their documentation.
             </p>
             <p>
-              Once you have a Webpack JSON file, choose it below.
+              Once you have a Webpack JSON file, choose it below (or drag it onto this view).
               {' '}<b>The file will not be uploaded anywhere. It will just be analyzed on your machine.</b>
             </p>
             <div
               className="file is-primary is-large is-boxed"
-              onChange={(e) => this.loadFile((e.target as HTMLInputElement).files![0])}
               style={{justifyContent: 'center', padding: '2em'}}
             >
               <label className="file-label">
-                <input className="file-input" type="file" name="resume"/>
+                <input
+                  className="file-input"
+                  type="file"
+                  onChange={(e) => this.loadFile((e.target as HTMLInputElement).files![0])}
+                />
                 <span className="file-cta">
-                    <span className="file-label">
-                      Choose a Webpack JSON file…
-                    </span>
+                  <span className="file-label">
+                    Choose a Webpack JSON file…
                   </span>
+                </span>
               </label>
             </div>
             <div className="has-text-centered">
