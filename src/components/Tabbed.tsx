@@ -3,6 +3,7 @@ import * as React from 'react';
 export interface TabInfo {
   id: string;
   title?: string;
+  hidden?: boolean;
   render: () => React.ReactElement<any>;
 }
 
@@ -35,14 +36,19 @@ export default class Tabbed extends React.Component<TabbedProps, TabbedState> {
         <div className="tabs" {...this.props.tabsProps}>
           <ul>
             {
-              this.props.tabs.map((tab) => (
-                <li
-                  key={tab.id}
-                  className={tab.id === activeTabId ? 'is-active' : undefined}
-                >
-                  <a onClick={(e) => this.setState({activeTabId: tab.id})}>{tab.title || tab.id}</a>
-                </li>
-              ))
+              this.props.tabs.map((tab) => {
+                if (tab.hidden) {
+                  return null;
+                }
+                return (
+                  <li
+                    key={tab.id}
+                    className={tab.id === activeTabId ? 'is-active' : undefined}
+                  >
+                    <a onClick={(e) => this.setState({activeTabId: tab.id})}>{tab.title || tab.id}</a>
+                  </li>
+                );
+              })
             }
           </ul>
         </div>
