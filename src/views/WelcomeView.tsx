@@ -86,14 +86,14 @@ export default class WelcomeView extends React.Component<WelcomeViewProps, Welco
               <div style={{margin: 'auto', marginTop: '1em'}}>
                 <a
                   className="button is-medium"
-                  onClick={() => this.props.onRequestExample('./static/example-data/example-webpack3.json')}
+                  onClick={() => this.props.onRequestExample('./example-data/example-webpack3.json')}
                 >
                   Load Webpack 3 Example
                 </a>
                 &nbsp;
                 <a
                   className="button is-medium"
-                  onClick={() => this.props.onRequestExample('./static/example-data/example-webpack4.json')}
+                  onClick={() => this.props.onRequestExample('./example-data/example-webpack4.json')}
                 >
                   Load Webpack 4 Example
                 </a>
