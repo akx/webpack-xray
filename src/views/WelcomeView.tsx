@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 import {WebpackAnalysisData} from '../WebpackAnalysisTypes';
-import Dropzone from 'react-dropzone';
 
 interface WelcomeViewProps {
   onLoadFile: (data: WebpackAnalysisData) => void,
@@ -18,16 +17,7 @@ export default class WelcomeView extends React.Component<WelcomeViewProps, Welco
   };
 
   public render() {
-    return (
-      <Dropzone
-        style={{position: 'relative'}}
-        onDrop={(files) => this.loadFile(files[0])}
-        onDragEnter={() => this.setState({isDropping: true})}
-        onDragLeave={() => this.setState({isDropping: false})}
-      >
-        {this.renderInner()}
-      </Dropzone>
-    );
+    return this.renderInner();
   }
 
   private loadFile = (file: File) => {
@@ -68,7 +58,7 @@ export default class WelcomeView extends React.Component<WelcomeViewProps, Welco
               For other build systems and Webpack wrappers, please consult their documentation.
             </p>
             <p>
-              Once you have a Webpack JSON file, choose it below (or drag it onto this view).
+              Once you have a Webpack JSON file, choose it below (or drag it onto the button).
               {' '}<b>The file will not be uploaded anywhere. It will just be analyzed on your machine.</b>
             </p>
             <div
