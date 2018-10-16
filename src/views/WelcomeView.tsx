@@ -63,8 +63,8 @@ export default class WelcomeView extends React.Component<WelcomeViewProps, Welco
               by adding the <code>--json</code> flag (and optionally the <code>--profile</code> flag,
               for additional timing information) to your Webpack command line and directing the output to a file.
               <br/>
-              <code>$ webpack --mode=production --json --profile > stats.json</code>
-              <br/>
+              <b>Webpack 3:</b> <code>$ webpack -p --stats --profile > stats.json</code><br/>
+              <b>Webpack 4:</b> <code>$ webpack --mode=production --json --profile > stats.json</code><br/>
               For other build systems and Webpack wrappers, please consult their documentation.
             </p>
             <p>
